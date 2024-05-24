@@ -15,7 +15,7 @@ export const CustomAudioPlayer: FC<CustomAudioPlayerProps> = ({ url }) => {
         showFilledVolume={false}
         showJumpControls={false}
         onPlay={(e) => console.log(e)}
-        src="yesterday_master.wav"
+        src={url}
       />
     </div>
   );

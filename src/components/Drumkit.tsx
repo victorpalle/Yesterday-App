@@ -1,8 +1,7 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import {
   KitsInitialState,
   WorkSpaceBoxState,
-  WorkSpacesInitialState1,
   WorkSpacesState,
 } from "../types/WorkSpace";
 import { playAudioWithNewAudioPlayer } from "../tools/playAudio";
@@ -28,11 +27,27 @@ const Drumkit: FC = () => {
     KitsInitialState.kits[0]
   );
 
+  const audioElements: { [key: string]: HTMLAudioElement } = {};
+
+  // Preload audio files
+  // useEffect(() => {
+  //   workSpacesState.boxes.forEach(box => {
+  //     const url = box.sample?.filename;
+  //     if (url) {
+  //       const audio = new Audio(url);
+  //       audioElements[url] = audio;
+  //     }
+  //   });
+  // }, [workSpacesState]);
+
   const onClickOnDrumPad = useCallback((drumpadIndex: number) => {
     const url = workSpacesState.boxes[drumpadIndex].sample?.filename;
     if (url) {
       playAudioWithNewAudioPlayer(url);
     }
+    // if (url && audioElements[url]) {
+    //   audioElements[url].play();
+    // }
   }, [workSpacesState]);
 
   const onClickOnKitButton = (index: number) => {

@@ -3,7 +3,7 @@ import Drumkit from "../components/Drumkit";
 import { CustomAudioPlayer } from "../components/CustomAudioPlayer";
 
 const Home: FC = () => {
-  const yesterdayMaster = "../audioFiles/Yesterday_master.wav";
+  const yesterdayMaster = "yesterday_master_no_drums.wav";
   return (
     <div className="flex w-screen h-screen p-9 flex-col justify-between">
       <div className="flex-col">
