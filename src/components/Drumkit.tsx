@@ -30,24 +30,24 @@ const Drumkit: FC = () => {
   const audioElements: { [key: string]: HTMLAudioElement } = {};
 
   // Preload audio files
-  // useEffect(() => {
-  //   workSpacesState.boxes.forEach(box => {
-  //     const url = box.sample?.filename;
-  //     if (url) {
-  //       const audio = new Audio(url);
-  //       audioElements[url] = audio;
-  //     }
-  //   });
-  // }, [workSpacesState]);
+  useEffect(() => {
+    workSpacesState.boxes.forEach(box => {
+      const url = box.sample?.filename;
+      if (url) {
+        const audio = new Audio(url);
+        audioElements[url] = audio;
+      }
+    });
+  }, [workSpacesState]);
 
   const onClickOnDrumPad = useCallback((drumpadIndex: number) => {
     const url = workSpacesState.boxes[drumpadIndex].sample?.filename;
-    if (url) {
-      playAudioWithNewAudioPlayer(url);
-    }
-    // if (url && audioElements[url]) {
-    //   audioElements[url].play();
+    // if (url) {
+    //   playAudioWithNewAudioPlayer(url);
     // }
+    if (url && audioElements[url]) {
+      audioElements[url].play();
+    }
   }, [workSpacesState]);
 
   const onClickOnKitButton = (index: number) => {
