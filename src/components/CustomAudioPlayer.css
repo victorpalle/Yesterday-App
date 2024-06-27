@@ -1,0 +1,23 @@
+.rhap_container {
+    background-color: black
+}
+
+.rhap_time {
+    color: white;
+}
+
+.rhap_progress-bar-show-download {
+    background-color: white;
+}
+
+.rhap_progress-indicator {
+    background-color: white;
+}
+
+.rhap_container svg {
+    color: white;
+}
+
+.rhap_volume-indicator {
+    background-color: white;
+}

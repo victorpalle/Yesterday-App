@@ -2,7 +2,7 @@ import { theme } from "../constants/theme";
 import { AudioSample } from "./AudioSampleState";
 
 export const WorkSpacesInitialState1: WorkSpacesState = {
-  name: "Standard",
+  name: "Original",
   boxes: [
     {
       frenchKey: "a",
@@ -39,7 +39,7 @@ export const WorkSpacesInitialState1: WorkSpacesState = {
 };
 
 export const WorkSpacesInitialState2: WorkSpacesState = {
-  name: "Secondary",
+  name: "IA",
   boxes: [
     {
       frenchKey: "a",

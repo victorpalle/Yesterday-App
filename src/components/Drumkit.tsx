@@ -13,12 +13,10 @@ interface DrumpadProps {
 }
 
 const Drumpad: FC<DrumpadProps> = ({ onClick, workSpaceBoxState }) => {
-
-
   const onKeyPressed = (event: any) => {
     if (workSpaceBoxState.sample) {
       if (workSpaceBoxState.englishKey === event.key) {
-        const url = workSpaceBoxState.sample.filename
+        const url = workSpaceBoxState.sample.filename;
         // playAudio(url, audioRef);
         if (url) {
           playAudioWithNewAudioPlayer(url);
@@ -26,7 +24,7 @@ const Drumpad: FC<DrumpadProps> = ({ onClick, workSpaceBoxState }) => {
       }
     }
   };
-  useKeyPress(['a', 'z', 'e', 'r', 'q', 's', 'd', 'f', 'q', 'w'], onKeyPressed);
+  useKeyPress(["a", "z", "e", "r", "q", "s", "d", "f", "q", "w"], onKeyPressed);
   return (
     <div
       // onClick={() => onClick(workSpaceBoxState.index)}
@@ -103,7 +101,7 @@ const Drumkit: FC = () => {
         <div>Loading ...</div>
       ) : (
         <>
-          <div className="flex w-full py-9 h-44 items-center justify-center space-x-4">
+          <div className="flex w-full py-9 h-44 items-center justify-center space-x-4 text-white">
             {workSpacesState.boxes.map((box) => (
               <Drumpad
                 key={box.index}
@@ -112,15 +110,14 @@ const Drumkit: FC = () => {
               />
             ))}
           </div>
-          Kits :
           <div className="flex w-full py-9 h-44 items-center justify-center space-x-4">
             {KitsInitialState.kits.map((kit, index) => (
               <div
                 key={index}
                 onClick={() => onClickOnKitButton(index)}
-                className="flex h-full w-[30%] border-solid border-2 rounded-lg items-center justify-center"
+                className="flex h-full w-[30%] border-solid border-2 rounded-lg items-center justify-center text-white"
               >
-                {kit.name}
+                {kit.name} kit
               </div>
             ))}
           </div>
