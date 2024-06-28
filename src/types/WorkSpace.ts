@@ -2,7 +2,7 @@ import { theme } from "../constants/theme";
 import { AudioSample } from "./AudioSampleState";
 
 export const WorkSpacesInitialState1: WorkSpacesState = {
-  name: "Original",
+  name: "IA",
   boxes: [
     {
       frenchKey: "a",
@@ -39,14 +39,14 @@ export const WorkSpacesInitialState1: WorkSpacesState = {
 };
 
 export const WorkSpacesInitialState2: WorkSpacesState = {
-  name: "IA",
+  name: "Original",
   boxes: [
     {
       frenchKey: "a",
       englishKey: "q",
       isSelected: true,
       index: 0,
-      sample: { filename: "snare.mp3", nickName: "Kick" },
+      sample: { filename: "Kick-OG.mp3", nickName: "Kick" },
       isPlaying: false,
       color: theme.palette.shinyPurple,
       lowOpacityColor: theme.palette.shinyPurpleLowOpacity,
@@ -56,7 +56,7 @@ export const WorkSpacesInitialState2: WorkSpacesState = {
       englishKey: "w",
       isSelected: false,
       index: 1,
-      sample: { filename: "snare.mp3", nickName: "Snare" },
+      sample: { filename: "Snare-OG.mp3", nickName: "Snare" },
       isPlaying: false,
       color: theme.palette.darkPink,
       lowOpacityColor: theme.palette.darkPinkLowOpacity,
@@ -66,7 +66,7 @@ export const WorkSpacesInitialState2: WorkSpacesState = {
       englishKey: "e",
       isSelected: false,
       index: 2,
-      sample: { filename: "hi-hat.mp3", nickName: "Hi-Hat" },
+      sample: { filename: "HiHat-OG.mp3", nickName: "Hi-Hat" },
       isPlaying: false,
       color: theme.palette.orange,
       lowOpacityColor: theme.palette.orangeLowOpacity,
@@ -76,7 +76,7 @@ export const WorkSpacesInitialState2: WorkSpacesState = {
 };
 
 export const KitsInitialState: KitsState = {
-  kits: [WorkSpacesInitialState1, WorkSpacesInitialState2],
+  kits: [WorkSpacesInitialState2, WorkSpacesInitialState1],
 };
 
 export type KitsState = {

@@ -13,23 +13,40 @@ interface DrumpadProps {
 }
 
 const Drumpad: FC<DrumpadProps> = ({ onClick, workSpaceBoxState }) => {
+  const [isPlayed, setIsPlayed] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isPlayed) {
+      setTimeout(() => {
+        setIsPlayed(false);
+      }, 100);
+    }
+  }, [isPlayed]);
+
   const onKeyPressed = (event: any) => {
     if (workSpaceBoxState.sample) {
       if (workSpaceBoxState.englishKey === event.key) {
         const url = workSpaceBoxState.sample.filename;
-        // playAudio(url, audioRef);
         if (url) {
           playAudioWithNewAudioPlayer(url);
         }
       }
     }
   };
+  const onTouchEndDrumPad = (index: number) => {
+    onClick(index);
+    setIsPlayed(true);
+  };
+
   useKeyPress(["a", "z", "e", "r", "q", "s", "d", "f", "q", "w"], onKeyPressed);
   return (
     <div
       // onClick={() => onClick(workSpaceBoxState.index)}
-      onTouchEnd={() => onClick(workSpaceBoxState.index)}
+      onTouchEnd={() => {
+        onTouchEndDrumPad(workSpaceBoxState.index);
+      }}
       className="flex h-full w-[30%] border-solid border-2 rounded-lg items-center justify-center"
+      style={{ backgroundColor: isPlayed ? "#c5bebe" : "black" }}
     >
       {workSpaceBoxState.sample?.nickName}
     </div>
@@ -40,6 +57,7 @@ const Drumkit: FC = () => {
   const [workSpacesState, setWorkSpacesState] = useState<WorkSpacesState>(
     KitsInitialState.kits[0]
   );
+  const [currentKitIndex, setCurrentKitIndex] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -92,7 +110,7 @@ const Drumkit: FC = () => {
   );
 
   const onClickOnKitButton = (index: number) => {
-    console.log(index);
+    setCurrentKitIndex(index);
     setWorkSpacesState(KitsInitialState.kits[index]);
   };
   return (
@@ -116,6 +134,11 @@ const Drumkit: FC = () => {
                 key={index}
                 onClick={() => onClickOnKitButton(index)}
                 className="flex h-full w-[30%] border-solid border-2 rounded-lg items-center justify-center text-white"
+                style={{
+                  backgroundColor:
+                    currentKitIndex === index ? "white" : "black",
+                  color: currentKitIndex === index ? "black" : "white",
+                }}
               >
                 {kit.name} kit
               </div>
